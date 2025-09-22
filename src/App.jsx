@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import Cuisines from './pages/Cuisines';
 import SearchResults from './pages/SearchResults'; // ✅ NEW
 import Snacks from './pages/Snacks';
-import Meals from './pages/meals';
+import Meals from './pages/Meals';
 import IndianHealthyRecipes from './pages/Healthy';
 import VeganRecipes from './pages/Vegan';
 import SeasonalRecipes from './pages/Seasonal';
