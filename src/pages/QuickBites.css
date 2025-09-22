@@ -1,0 +1,88 @@
+.quickbites-container {
+  padding: 2rem;
+  background: #fffbe7; /* Same as Snacks */
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 1s ease;
+}
+
+.quickbites-title {
+  text-align: center;
+  color: #ff7a00; /* Same as Snacks */
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.quickbites-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.quickbites-btn {
+  padding: 0.8rem 1.5rem;
+  background: #fff4e6; /* Same as Snacks */
+  border: 2px solid #ff9d57;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ff7a00;
+  transition: background 0.3s ease;
+}
+
+.quickbites-btn:hover,
+.quickbites-btn.active {
+  background-color: #fff0d9;
+}
+
+.quickbites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.quickbites-card {
+  background: #fff4e6;
+  border: 2px solid #ff9d57;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.quickbites-card:hover {
+  transform: scale(1.05);
+  background-color: #fff0d9;
+}
+
+.quickbites-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.quickbites-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.quickbites-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.quickbites-card.highlight {
+  background-color: #fff3cd !important;
+  box-shadow: 0 0 0 4px #ffdd99;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

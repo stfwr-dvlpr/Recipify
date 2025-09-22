@@ -1,0 +1,83 @@
+.meals-container {
+  padding: 2rem;
+  background: #fff8f0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 1s ease;
+}
+
+.meals-title {
+  text-align: center;
+  color: #d35400;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.meals-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.meals-btn {
+  padding: 0.8rem 1.5rem;
+  background: #fcebd7;
+  border: 2px solid #e67e22;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #d35400;
+  transition: background 0.3s ease;
+}
+
+.meals-btn:hover,
+.meals-btn.active {
+  background-color: #fcd7b6;
+}
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.meals-card {
+  background: #fcebd7;
+  border: 2px solid #e67e22;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.meals-card:hover {
+  transform: scale(1.05);
+  background-color: #fcd7b6;
+}
+
+.meals-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.meals-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.meals-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

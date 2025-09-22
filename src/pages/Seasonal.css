@@ -1,0 +1,83 @@
+.seasonal-container {
+  padding: 2rem;
+  background: #fff8f0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 1s ease;
+}
+
+.seasonal-title {
+  text-align: center;
+  color: #bf360c; /* Indian earthy tone */
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.seasonal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.seasonal-btn {
+  padding: 0.8rem 1.5rem;
+  background: #ffe0b2;
+  border: 2px solid #ff9800;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #e65100;
+  transition: background 0.3s ease;
+}
+
+.seasonal-btn:hover,
+.seasonal-btn.active {
+  background-color: #ffcc80;
+}
+
+.seasonal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.seasonal-card {
+  background: #fff3e0;
+  border: 2px solid #ffb74d;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.seasonal-card:hover {
+  transform: scale(1.05);
+  background-color: #ffe0b2;
+}
+
+.seasonal-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.seasonal-card h3 {
+  font-size: 1.2rem;
+  color: #4e342e;
+  margin-bottom: 0.3rem;
+}
+
+.seasonal-card p {
+  font-size: 0.9rem;
+  color: #5d4037;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
