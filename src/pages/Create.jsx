@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import './Create.css';
 
 function Create() {
+
   const [activeCategory, setActiveCategory] = useState(null);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const categories = {
@@ -39,20 +41,51 @@ function Create() {
     );
   };
 
-  const handleGenerateRecipe = () => {
+  const handleGenerateRecipe = async() => {
+    const generateBtn = document.getElementById('generate-btn');
+    const promptInput = `Give me a recipe for a dish with the following ingredients: ${selectedIngredients}`;
+    const resultDiv = document.getElementById('recipe-result');
+
     if (selectedIngredients.length === 0) return alert("Please select ingredients!");
 
+    setIsLoading(true);
+    generateBtn.disabled = true;
+    resultDiv.textContent = 'generating recipe...';
+
+    try{
+      const response = await fetch('http://localhost:8081/api/generate', { //use 3001 for expressjs
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: promptInput }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        resultDiv.textContent = data.generatedText;
+    } catch(err)
+    {
+      console.error(err.message);
+      resultDiv.textContent = 'Failed to get response from AI. Check console';
+    }
+    finally{
+      setIsLoading(false);
+      generateBtn.disabled = false;
+    }
+
     // Save to localStorage
-    const existing = JSON.parse(localStorage.getItem('recipes') || '[]');
-    const newRecipe = {
-      id: Date.now(),
-      title: `Recipe ${existing.length + 1}`,
-      ingredients: selectedIngredients
-    };
-    localStorage.setItem('recipes', JSON.stringify([...existing, newRecipe]));
+    // const existing = JSON.parse(localStorage.getItem('recipes') || '[]');
+    // const newRecipe = {
+    //   id: Date.now(),
+    //   title: `Recipe ${existing.length + 1}`,
+    //   ingredients: selectedIngredients
+    // };
+    // localStorage.setItem('recipes', JSON.stringify([...existing, newRecipe]));
 
     // Redirect to YourRecipes
-    navigate('/your-recipes');
+    // navigate('/your-recipes');
   };
 
   return (
@@ -91,8 +124,10 @@ function Create() {
         </div>
       )}
 
-      <button className="generate-btn" onClick={handleGenerateRecipe}>
-        Generate Recipe
+      <div id='recipe-result' className='recipe-result'></div>
+
+      <button id='generate-btn' className="generate-btn" onClick={handleGenerateRecipe}>
+         {isLoading ? 'Loading...' : 'Generate'}
       </button>
     </div>
   );
