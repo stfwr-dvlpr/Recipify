@@ -6,6 +6,8 @@ import Create from './pages/Create';
 import YourRecipes from './pages/YourRecipes';
 import Desserts from './pages/Desserts';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import Contact from './pages/Contact';
 import Cuisines from './pages/Cuisines';
 import SearchResults from './pages/SearchResults'; // ✅ NEW
 import Snacks from './pages/Snacks';
@@ -14,9 +16,10 @@ import IndianHealthyRecipes from './pages/Healthy';
 import VeganRecipes from './pages/Vegan';
 import SeasonalRecipes from './pages/Seasonal';
 import QuickBites from './pages/Quickbites';
+import { useAuth } from './context/AuthContext';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const {isAuthenticated, loading} = useAuth();
 
   return (
     <Router>
@@ -25,79 +28,87 @@ function App() {
         <Route
           path="/"
           element={
-            isAuthenticated ? <Home /> : <Navigate to="/login" replace />
+            isAuthenticated? <Home /> : <Navigate to='/login' replace />
           }
         />
         <Route
           path="/create"
           element={
-            isAuthenticated ? <Create /> : <Navigate to="/login" replace />
+          isAuthenticated?   <Create /> : <Navigate to='/login' replace /> 
           }
         />
         <Route
           path="/your-recipes"
           element={
-            isAuthenticated ? <YourRecipes /> : <Navigate to="/login" replace />
+          isAuthenticated?  <YourRecipes /> : <Navigate to='/login' replace /> 
           }
         />
         <Route
           path="/desserts"
           element={
-            isAuthenticated ? <Desserts /> : <Navigate to="/login" replace />
+             <Desserts /> 
           }
         />
         <Route
           path="/cuisines"
           element={
-            isAuthenticated ? <Cuisines /> : <Navigate to="/login" replace />
+             <Cuisines /> 
           }
         />
          <Route
           path="/quickbites"
           element={
-            isAuthenticated ? <QuickBites /> : <Navigate to="/login" replace />
+             <QuickBites /> 
           }
         />
         <Route
           path="/snacks"
           element={
-            isAuthenticated ? <Snacks /> : <Navigate to="/login" replace />
+             <Snacks /> 
           }
         />
         <Route
           path="/vegan"
           element={
-            isAuthenticated ? <VeganRecipes /> : <Navigate to="/login" replace />
+             <VeganRecipes /> 
           }
         />
         <Route
           path="/seasonal"
           element={
-            isAuthenticated ? <SeasonalRecipes /> : <Navigate to="/login" replace />
+             <SeasonalRecipes /> 
           }
         />
        <Route
             path="/meals"
             element={
-             isAuthenticated ? <Meals /> : <Navigate to="/login" replace />
+              <Meals /> 
             }
         />
        <Route
             path="/healthy"
             element={
-             isAuthenticated ? <IndianHealthyRecipes /> : <Navigate to="/login" replace />
+              <IndianHealthyRecipes /> 
             }
         />
 
         <Route
           path="/search"
           element={
-            isAuthenticated ? <SearchResults /> : <Navigate to="/login" replace />
+             <SearchResults /> 
           }
         />
         <Route
+          path="/contact"
+          element={<Contact />}
+        />
+        <Route
           path="/login"
-          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+          element={<Login />}
+        />
+        <Route
+          path="/register"
+          element={<Register />}
         />
       </Routes>
     </Router>
